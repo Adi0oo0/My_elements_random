@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Modern Classic Navigation</title>
+    <!-- Linking Google Fonts for a sophisticated look -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS STYLES START HERE --- */
+
+        /* 1. GLOBAL RESET & COLOR PALETTE */
+        :root {
+            --bg-color: #121217;         /* Very Dark Blue/Black Background */
+            --text-color: #e0e0e0;       /* Off-White Text for readability */
+            --accent-primary: #ff4500;   /* Vibrant Orange/Red (Electric Glow) */
+            --accent-secondary: #a3b18a; /* Muted Gold/Green Accent */
+            --hover-bg: #1e1e25;         /* Slightly lighter dark for hover state */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif; /* Modern clean font for general text */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 2. NAVIGATION CONTAINER STYLING */
+        .nav-container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: #1a1a20; /* Slightly different dark color for card feel */
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(255, 255, 255, 0.03); /* Deep shadow for depth */
+            border: 1px solid #2a2a38; /* Subtle border glow/separation */
+        }
+
+        /* Logo/Branding (Classic touch) */
+        .nav-brand {
+            font-family: 'Playfair Display', serif; /* Elegant, classic font for branding */
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 25px;
+        }
+
+        /* Navigation Links Wrapper */
+        .nav-menu {
+            display: flex;
+            justify-content: space-around;
+            gap: 15px; /* Space between links */
+        }
+
+        /* Individual Link Styling (The core of the design) */
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            padding: 10px 20px;
+            font-weight: 500;
+            position: relative; /* Essential for pseudo-element effects */
+            cursor: pointer;
+            transition: color 0.3s ease, transform 0.2s ease;
+            display: inline-block;
+        }
+
+        /* 🌟 HOVER ANIMATION EFFECT (The Underline Glow) 🌟 */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 5px; /* Position above the text baseline */
+            left: 0;
+            background-color: var(--accent-primary);
+            transform: scaleX(0); /* Start invisible/zero width */
+            transition: transform 0.3s cubic-bezier(0.2, 1, 0.4, 1), opacity 0.3s ease; /* Smooth scaling transition */
+            transform-origin: center;
+        }
+
+        /* HOVER STATE: Making the underline grow */
+        .nav-link:hover {
+            color: var(--accent-primary); /* Text color change on hover */
+            transform: translateY(-2px) scale(1.03); /* Subtle lift and slight enlargement */
+        }
+
+        /* HOVER STATE: Activating the underline glow */
+        .nav-link:hover::after {
+            transform: scaleX(1); /* Fully visible width */
+            opacity: 1;
+        }
+
+        /* ACTIVE/FOCUS State (Optional, good for accessibility/JS handling) */
+        .nav-link:focus {
+            color: var(--accent-primary);
+            outline: none; /* Remove default browser focus ring */
+        }
+
+        /* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+        @media (max-width: 900px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+            .nav-link {
+                text-align: center;
+                width: 80%; /* Make links take up more width on smaller screens */
+                padding: 12px 30px;
+            }
+        }
+
+        /* --- CSS STYLES END HERE --- */
+    </style>
+</head>
+<body>
+
+    <div class="nav-container">
+        <!-- Branding/Logo Area (Classic Touch) -->
+        <div class="nav-brand">AETHERIUM</div>
+
+        <!-- Navigation Links (Modern & Animated) -->
+        <nav class="nav-menu">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Services</a>
+            <a href="#" class="nav-link">Portfolio</a>
+            <a href="#" class="nav-link">About Us</a>
+            <a href="#" class="nav-link" style="border: 1px solid var(--accent-primary); padding: 10px 25px; border-radius: 5px;">Contact</a>
+        </nav>
+    </div>
+
+</body>
+</html>
