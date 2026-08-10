@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya — CSE · AI/ML</title>
+<meta name="description" content="Aditya — Computer Science & Engineering student focused on AI/ML. Projects in mathematical visualization, prompt engineering, computer vision, and web.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+
+<header class="site-header">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">Aditya <span>· CSE / AI-ML</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav class="axis-nav">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="about.html" data-page="about">About</a>
+      <a href="projects.html" data-page="projects">Projects</a>
+      <a href="skills.html" data-page="skills">Skills</a>
+      <a href="contact.html" data-page="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section style="padding-top:88px;">
+    <div class="wrap" style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;">
+      <div>
+        <p class="eyebrow">Computer Science &amp; Engineering — AI / ML</p>
+        <h1 style="font-size:clamp(52px,9vw,108px); line-height:0.95; margin-top:18px; color:var(--chalk);">Aditya</h1>
+        <p style="font-size:19px; color:var(--chalk-dim); max-width:46ch; margin-top:24px;">
+          I build small, precise things — equation plotters, classifiers, prompt tools, and the odd storefront — where mathematics meets a usable interface.
+        </p>
+        <div style="display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;">
+          <a href="projects.html" class="btn btn-solid">View projects →</a>
+          <a href="contact.html" class="btn">Get in touch</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="border:1px solid var(--line-strong); background:var(--ink-2); padding:22px 22px 14px; position:relative;">
+          <p class="eyebrow" style="margin-bottom:14px;">loss ↓ over epochs</p>
+          <svg id="heroCurve" viewBox="0 0 360 190" width="100%" height="190" fill="none">
+            <line x1="20" y1="10" x2="20" y2="165" stroke="var(--line-strong)" stroke-width="1"/>
+            <line x1="20" y1="165" x2="345" y2="165" stroke="var(--line-strong)" stroke-width="1"/>
+            <path id="curvePath" d="M20,25 C90,35 110,120 150,132 C200,146 220,150 260,156 C290,160 320,162 345,163"
+                  stroke="#7FA695" stroke-width="2.5" stroke-linecap="round"/>
+            <circle id="curveDot" cx="345" cy="163" r="4.5" fill="#E7A94C"/>
+          </svg>
+          <p style="font-family:var(--mono); font-size:11px; color:var(--chalk-dim); letter-spacing:0.05em; margin-top:6px;">fig. 1 — training a digit classifier to 98% accuracy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="axis wrap">
+
+  <!-- ============ CURRENTLY ============ -->
+  <section class="reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Currently</p>
+        <h2>Studying systems, building small proofs of them.</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--line-strong); border:1px solid var(--line-strong);">
+        <div style="background:var(--ink); padding:28px;">
+          <p class="eyebrow" style="color:var(--kiln);">01</p>
+          <p style="margin-top:10px; color:var(--chalk);">Studying Computer Science &amp; Engineering, specializing in AI/ML.</p>
+        </div>
+        <div style="background:var(--ink); padding:28px;">
+          <p class="eyebrow" style="color:var(--kiln);">02</p>
+          <p style="margin-top:10px; color:var(--chalk);">Learning PyTorch — currently comfortable with the fundamentals of building and training models.</p>
+        </div>
+        <div style="background:var(--ink); padding:28px;">
+          <p class="eyebrow" style="color:var(--kiln);">03</p>
+          <p style="margin-top:10px; color:var(--chalk);">Writing a lot of Python and JavaScript to turn math and models into things people can actually click on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED STAT ============ -->
+  <section class="reveal" style="background:var(--paper); color:var(--ink); padding:88px 0;">
+    <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+      <div>
+        <p class="eyebrow" style="color:var(--glaze-dim);">Featured build</p>
+        <h2 style="color:var(--ink); margin-top:10px; font-size:clamp(26px,3.4vw,36px);">A handwritten digit classifier that gets it right 98% of the time.</h2>
+        <p style="margin-top:16px; color:#4B5450; max-width:48ch;">
+          Trained on the classic digits dataset — the project that pushed me from reading about neural networks to actually shipping one.
+        </p>
+        <a href="projects.html" class="btn" style="margin-top:24px; border-color:#4B5450; color:var(--ink);">See how it works →</a>
+      </div>
+      <div style="display:flex; align-items:baseline; justify-content:center;">
+        <span style="font-family:var(--serif); font-size:clamp(90px,14vw,180px); line-height:1; color:var(--glaze-dim);">98</span>
+        <span style="font-family:var(--mono); font-size:22px; color:var(--ink); margin-left:6px;">%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUICK LINKS ============ -->
+  <section class="reveal">
+    <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px;">
+      <a href="about.html" class="quick-card">
+        <p class="eyebrow">About</p>
+        <p style="font-family:var(--serif); font-size:24px; color:var(--chalk); margin-top:10px;">Who I am</p>
+      </a>
+      <a href="projects.html" class="quick-card">
+        <p class="eyebrow">Projects</p>
+        <p style="font-family:var(--serif); font-size:24px; color:var(--chalk); margin-top:10px;">What I've built</p>
+      </a>
+      <a href="skills.html" class="quick-card">
+        <p class="eyebrow">Skills</p>
+        <p style="font-family:var(--serif); font-size:24px; color:var(--chalk); margin-top:10px;">What I work with</p>
+      </a>
+      <a href="contact.html" class="quick-card">
+        <p class="eyebrow">Contact</p>
+        <p style="font-family:var(--serif); font-size:24px; color:var(--chalk); margin-top:10px;">Say hello</p>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Aditya. Built from scratch — HTML, CSS, JS.</span>
+    <a href="mailto:suryavanshiaditya6392@gmail.com">suryavanshiaditya6392@gmail.com</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  const path = document.getElementById('curvePath');
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  path.getBoundingClientRect();
+  path.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(.4,.6,.2,1)';
+  requestAnimationFrame(()=>{ path.style.strokeDashoffset = '0'; });
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Aditya</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="about">
+
+<header class="site-header">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">Aditya <span>· CSE / AI-ML</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav class="axis-nav">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="about.html" data-page="about">About</a>
+      <a href="projects.html" data-page="projects">Projects</a>
+      <a href="skills.html" data-page="skills">Skills</a>
+      <a href="contact.html" data-page="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section style="padding-top:80px; padding-bottom:60px;">
+    <div class="wrap" style="display:grid; grid-template-columns:0.7fr 1.3fr; gap:56px; align-items:end;">
+      <div style="width:150px; height:150px; position:relative;">
+        <svg viewBox="0 0 150 150" width="150" height="150">
+          <circle cx="75" cy="75" r="72" fill="none" stroke="#7FA695" stroke-width="1"/>
+          <circle cx="75" cy="75" r="52" fill="none" stroke="#E7A94C" stroke-width="1" stroke-dasharray="3 5"/>
+          <text x="75" y="83" text-anchor="middle" font-family="Instrument Serif" font-size="46" fill="#ECE7DB">A.</text>
+        </svg>
+      </div>
+      <div>
+        <p class="eyebrow">About</p>
+        <h1 style="font-size:clamp(36px,5vw,56px); margin-top:12px; color:var(--chalk);">Equations first, interfaces second.</h1>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal" style="padding-top:0;">
+    <div class="wrap" style="display:grid; grid-template-columns:1.4fr 1fr; gap:56px;">
+      <div style="font-size:18px; color:var(--chalk-dim); display:flex; flex-direction:column; gap:20px; max-width:60ch;">
+        <p>I'm Aditya, a Computer Science &amp; Engineering student specializing in AI/ML. Most of what I build starts the same way — with a question that has a precise, checkable answer: does this curve plot correctly, does this model classify correctly, does this prompt actually get a better output.</p>
+        <p>That instinct is why my projects look a little scattered on the surface — a maths visualizer, a prompt generator, a digit classifier, an e-commerce site for ceramics — but underneath, they're the same habit applied to different materials: take something fuzzy, give it structure, and make it usable by someone who isn't me.</p>
+        <p>I'm still early in the AI/ML side of things — comfortable with Python, getting hands-on with PyTorch — and I'd rather say that plainly than dress it up. The digit classifier at 98% accuracy is the proof I point to when I want to show, not tell, where that's headed.</p>
+      </div>
+
+      <div style="border-left:1px solid var(--line-strong); padding-left:32px; display:flex; flex-direction:column; gap:28px;">
+        <div>
+          <p class="eyebrow" style="color:var(--kiln);">Field</p>
+          <p style="font-family:var(--serif); font-size:22px; color:var(--chalk); margin-top:6px;">Computer Science &amp; Engineering</p>
+        </div>
+        <div>
+          <p class="eyebrow" style="color:var(--kiln);">Focus</p>
+          <p style="font-family:var(--serif); font-size:22px; color:var(--chalk); margin-top:6px;">Artificial Intelligence &amp; Machine Learning</p>
+        </div>
+        <div>
+          <p class="eyebrow" style="color:var(--kiln);">Approach</p>
+          <p style="color:var(--chalk-dim); margin-top:6px;">Learn a concept, then build the smallest real thing that proves I understood it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="axis wrap">
+
+  <!-- ============ HOW I WORK ============ -->
+  <section class="reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How I work</p>
+        <h2>Three habits, repeated across every project.</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1px; background:var(--line-strong); border:1px solid var(--line-strong);">
+        <div style="background:var(--ink); padding:32px;">
+          <p style="font-family:var(--serif); font-size:22px; color:var(--glaze-lt);">Understand the math</p>
+          <p style="color:var(--chalk-dim); margin-top:10px; font-size:15px;">Before writing code, I work out what's actually happening — the equation, the gradient, the transformation.</p>
+        </div>
+        <div style="background:var(--ink); padding:32px;">
+          <p style="font-family:var(--serif); font-size:22px; color:var(--glaze-lt);">Ship something real</p>
+          <p style="color:var(--chalk-dim); margin-top:10px; font-size:15px;">A working, clickable version beats a perfect plan. I'd rather have a rough demo than a polished idea.</p>
+        </div>
+        <div style="background:var(--ink); padding:32px;">
+          <p style="font-family:var(--serif); font-size:22px; color:var(--glaze-lt);">Make it legible</p>
+          <p style="color:var(--chalk-dim); margin-top:10px; font-size:15px;">Whether it's a plotted curve or a product grid, the interface should explain itself without a manual.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Aditya. Built from scratch — HTML, CSS, JS.</span>
+    <a href="mailto:suryavanshiaditya6392@gmail.com">suryavanshiaditya6392@gmail.com</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

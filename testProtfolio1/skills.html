@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Aditya</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .skill-row{ display:grid; grid-template-columns:220px 1fr 120px; gap:24px; align-items:center; padding:22px 0; border-bottom:1px solid var(--line); }
+  .skill-row:last-child{ border-bottom:none; }
+  .skill-name{ font-family:var(--serif); font-size:22px; color:var(--chalk); }
+  .skill-note{ color:var(--chalk-dim); font-size:14.5px; }
+  .skill-level{ font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; text-align:right; }
+  .lvl-comfortable{ color:var(--glaze-lt); }
+  .lvl-learning{ color:var(--kiln); }
+  @media(max-width:640px){ .skill-row{ grid-template-columns:1fr; gap:6px; } .skill-level{ text-align:left; } }
+</style>
+</head>
+<body data-page="skills">
+
+<header class="site-header">
+  <div class="wrap nav-row">
+    <a href="index.html" class="logo">Aditya <span>· CSE / AI-ML</span></a>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav class="axis-nav">
+      <a href="index.html" data-page="home">Home</a>
+      <a href="about.html" data-page="about">About</a>
+      <a href="projects.html" data-page="projects">Projects</a>
+      <a href="skills.html" data-page="skills">Skills</a>
+      <a href="contact.html" data-page="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section style="padding-bottom:20px;">
+    <div class="wrap">
+      <p class="eyebrow">Skills</p>
+      <h1 style="font-size:clamp(36px,5vw,56px); margin-top:12px; color:var(--chalk); max-width:16ch;">What I actually work with.</h1>
+      <p style="color:var(--chalk-dim); margin-top:16px; max-width:56ch; font-size:17px;">No inflated bars — just what I use, and how honestly I'd rate my hand at it.</p>
+    </div>
+  </section>
+
+  <section class="reveal">
+    <div class="wrap">
+      <p class="eyebrow" style="color:var(--kiln); margin-bottom:8px;">Languages</p>
+      <div style="border-top:1px solid var(--line-strong);">
+        <div class="skill-row">
+          <span class="skill-name">Python</span>
+          <span class="skill-note">Primary language — used across every ML and tooling project.</span>
+          <span class="skill-level lvl-comfortable">Comfortable</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">JavaScript</span>
+          <span class="skill-note">For interactivity — from the equation visualizer to storefront cart logic.</span>
+          <span class="skill-level lvl-comfortable">Comfortable</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">HTML / CSS</span>
+          <span class="skill-note">Structure and styling for everything I ship on the web, this site included.</span>
+          <span class="skill-level lvl-comfortable">Comfortable</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="reveal" style="padding-top:0;">
+    <div class="wrap">
+      <p class="eyebrow" style="color:var(--kiln); margin-bottom:8px;">Machine Learning</p>
+      <div style="border-top:1px solid var(--line-strong);">
+        <div class="skill-row">
+          <span class="skill-name">PyTorch</span>
+          <span class="skill-note">Still early here — enough to build and train a working classifier end to end.</span>
+          <span class="skill-level lvl-learning">Learning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="axis wrap">
+
+  <section class="reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">In practice</p>
+        <h2>Where each skill actually showed up.</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--line-strong); border:1px solid var(--line-strong);">
+        <div style="background:var(--ink); padding:28px;">
+          <p class="eyebrow">Python</p>
+          <p style="margin-top:10px; color:var(--chalk-dim); font-size:14.5px;">Digit classifier, equation engine, prompt generator logic.</p>
+        </div>
+        <div style="background:var(--ink); padding:28px;">
+          <p class="eyebrow">PyTorch</p>
+          <p style="margin-top:10px; color:var(--chalk-dim); font-size:14.5px;">Training and evaluating the digit classifier to 98% accuracy.</p>
+        </div>
+        <div style="background:var(--ink); padding:28px;">
+          <p class="eyebrow">JavaScript</p>
+          <p style="margin-top:10px; color:var(--chalk-dim); font-size:14.5px;">Live equation plotting and storefront interactivity.</p>
+        </div>
+        <div style="background:var(--ink); padding:28px;">
+          <p class="eyebrow">HTML / CSS</p>
+          <p style="margin-top:10px; color:var(--chalk-dim); font-size:14.5px;">The ceramics storefront, built and styled from scratch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>© 2026 Aditya. Built from scratch — HTML, CSS, JS.</span>
+    <a href="mailto:suryavanshiaditya6392@gmail.com">suryavanshiaditya6392@gmail.com</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

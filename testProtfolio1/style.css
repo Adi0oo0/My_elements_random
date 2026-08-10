@@ -1,0 +1,203 @@
+/* ==========================================================================
+   Aditya — CSE / AI-ML portfolio
+   Design language: graph-paper precision (math) + kiln glaze warmth (ceramics)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --ink:      #10151A;
+  --ink-2:    #171E25;
+  --ink-3:    #1F2830;
+  --paper:    #EFEAE0;
+  --paper-2:  #E4DECF;
+  --glaze:    #7FA695;
+  --glaze-dim:#5C8377;
+  --glaze-lt: #A9C7BA;
+  --kiln:     #E7A94C;
+  --kiln-dim: #B9843A;
+  --chalk:    #ECE7DB;
+  --chalk-dim:#98A29E;
+  --line:     rgba(236,231,216,0.10);
+  --line-strong: rgba(236,231,216,0.22);
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --mono:  'JetBrains Mono', 'SF Mono', monospace;
+  --sans:  'Inter', -apple-system, sans-serif;
+
+  --max: 1180px;
+  --pad: clamp(24px, 5vw, 72px);
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+}
+
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--chalk);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+
+/* ambient graph-paper field ------------------------------------------- */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 40%, transparent 85%);
+}
+
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+h1,h2,h3,h4{ font-family:var(--serif); font-weight:400; margin:0; letter-spacing:0.2px; }
+p{ margin:0; }
+.wrap{ max-width:var(--max); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad); position:relative; z-index:1; }
+
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--glaze-lt);
+}
+
+/* ==========================================================================
+   NAV — axis-tick navigation: nav items sit as marked points on a line,
+   the way solutions sit on a plotted axis.
+   ========================================================================== */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(16,21,26,0.86);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.nav-row{
+  display:flex; align-items:center; justify-content:space-between;
+  height:76px;
+}
+.logo{
+  font-family:var(--serif); font-size:26px; letter-spacing:0.5px; color:var(--chalk);
+  display:flex; align-items:baseline; gap:8px;
+}
+.logo span{ font-family:var(--mono); font-size:11px; color:var(--glaze-lt); letter-spacing:0.1em; }
+
+.axis-nav{
+  display:flex; align-items:center; gap:0;
+  position:relative;
+}
+.axis-nav::before{
+  content:"";
+  position:absolute; left:0; right:0; top:50%;
+  height:1px; background:var(--line-strong);
+  z-index:0;
+}
+.axis-nav a{
+  position:relative; z-index:1;
+  font-family:var(--mono); font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase;
+  color:var(--chalk-dim);
+  padding:0 20px;
+  height:76px; display:flex; align-items:center;
+  transition:color .2s ease;
+}
+.axis-nav a::before{
+  content:"";
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:5px; height:5px; border-radius:50%;
+  background:var(--ink); border:1px solid var(--line-strong);
+  transition:all .2s ease;
+}
+.axis-nav a:hover{ color:var(--chalk); }
+.axis-nav a.active{ color:var(--glaze-lt); }
+.axis-nav a.active::before{
+  background:var(--glaze); border-color:var(--glaze);
+  box-shadow:0 0 0 4px rgba(127,166,149,0.18);
+}
+
+.nav-toggle{ display:none; }
+
+@media (max-width: 760px){
+  .axis-nav{ position:fixed; inset:76px 0 0 0; flex-direction:column; background:var(--ink); align-items:flex-start; padding:8px var(--pad) 32px; transform:translateY(-8px); opacity:0; pointer-events:none; transition:all .25s ease; }
+  .axis-nav.open{ opacity:1; pointer-events:auto; transform:translateY(0); }
+  .axis-nav::before{ display:none; }
+  .axis-nav a{ height:52px; width:100%; border-bottom:1px solid var(--line); padding:0; }
+  .axis-nav a::before{ display:none; }
+  .nav-toggle{
+    display:flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:8px;
+  }
+  .nav-toggle span{ width:22px; height:1.5px; background:var(--chalk); display:block; }
+}
+
+/* ==========================================================================
+   BUTTONS / TAGS
+   ========================================================================== */
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family:var(--mono); font-size:13px; letter-spacing:0.04em;
+  padding:14px 26px;
+  border:1px solid var(--line-strong);
+  border-radius:2px;
+  color:var(--chalk);
+  transition:all .2s ease;
+}
+.btn:hover{ border-color:var(--glaze); color:var(--glaze-lt); }
+.btn-solid{
+  background:var(--glaze); border-color:var(--glaze); color:var(--ink);
+  font-weight:600;
+}
+.btn-solid:hover{ background:var(--glaze-lt); border-color:var(--glaze-lt); color:var(--ink); }
+
+.tag{
+  font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+  padding:5px 10px; border:1px solid var(--line-strong); border-radius:2px; color:var(--chalk-dim);
+}
+
+/* ==========================================================================
+   SECTIONS
+   ========================================================================== */
+section{ padding:96px 0; position:relative; z-index:1; }
+.section-head{ margin-bottom:56px; max-width:640px; }
+.section-head h2{ font-size:clamp(30px,4vw,44px); color:var(--chalk); margin-top:10px; }
+.section-head p{ color:var(--chalk-dim); margin-top:14px; font-size:17px; }
+
+hr.axis{
+  border:none; height:1px; background:var(--line-strong); margin:0; position:relative;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+footer{
+  border-top:1px solid var(--line);
+  padding:48px 0;
+  position:relative; z-index:1;
+}
+.footer-row{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  font-family:var(--mono); font-size:12px; color:var(--chalk-dim); letter-spacing:0.04em;
+}
+.footer-row a:hover{ color:var(--glaze-lt); }
+
+.quick-card{
+  border:1px solid var(--line-strong); padding:28px; display:block; transition:border-color .2s ease, transform .2s ease;
+}
+.quick-card:hover{ border-color:var(--glaze); transform:translateY(-3px); }
+
+/* ==========================================================================
+   REVEAL ON SCROLL
+   ========================================================================== */
+.reveal{ opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.in{ opacity:1; transform:translateY(0); }
