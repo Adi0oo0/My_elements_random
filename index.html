@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SBM&amp;G — Premium Tiles, Marble &amp; Granite</title>
+  <meta name="description" content="SBM&G — India's finest source for premium tiles, marble, granite, ceramics and construction materials. Retail and wholesale available." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --cream-dark: #EDE5D5;
+      --charcoal: #1A1807;
+      --charcoal-mid: #2C2A1F;
+      --gold: #B8903A;
+      --gold-light: #D4AF6A;
+      --gold-pale: #F0E4C4;
+      --stone: #8C8070;
+      --stone-light: #C4B8A4;
+      --white: #FDFAF5;
+      --dark-bg: #13110C;
+      --serif: 'Playfair Display', Georgia, serif;
+      --serif-light: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+    }
+
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── CUSTOM CURSOR ─── */
+    #cursor {
+      position: fixed; width: 12px; height: 12px;
+      background: var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: transform 0.1s, width 0.3s var(--ease-out), height 0.3s var(--ease-out), background 0.3s;
+    }
+    #cursor-ring {
+      position: fixed; width: 40px; height: 40px;
+      border: 1.5px solid var(--gold); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: transform 0.35s var(--ease-out), width 0.4s var(--ease-out), height 0.4s var(--ease-out), opacity 0.3s;
+    }
+    body:has(a:hover) #cursor, body:has(button:hover) #cursor { width: 6px; height: 6px; }
+    body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 60px; height: 60px; opacity: 0.5; }
+
+    /* ─── LOADER ─── */
+    #loader {
+      position: fixed; inset: 0; background: var(--dark-bg);
+      z-index: 10000; display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 2rem;
+      transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+    }
+    #loader.hide { opacity: 0; transform: translateY(-100%); pointer-events: none; }
+    #loader-logo {
+      font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--gold-light); letter-spacing: 0.06em;
+      opacity: 0; animation: fadeUp 0.8s 0.3s var(--ease-out) forwards;
+    }
+    #loader-bar-wrap { width: 200px; height: 1px; background: rgba(255,255,255,0.1); }
+    #loader-bar {
+      height: 1px; background: var(--gold); width: 0;
+      animation: loadBar 2s 0.6s var(--ease-out) forwards;
+    }
+    #loader-sub {
+      font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.3em;
+      color: var(--stone); text-transform: uppercase;
+      opacity: 0; animation: fadeUp 0.6s 0.5s var(--ease-out) forwards;
+    }
+    @keyframes loadBar { to { width: 100%; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1.5rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s, padding 0.4s, backdrop-filter 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(245,240,232,0.92);
+      backdrop-filter: blur(16px);
+      padding: 1rem 3rem;
+      border-bottom: 1px solid rgba(184,144,58,0.15);
+    }
+    .nav-logo {
+      font-family: var(--serif); font-size: 1.6rem; color: var(--white);
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: color 0.4s;
+    }
+    nav.scrolled .nav-logo { color: var(--charcoal); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: var(--sans); font-size: 0.78rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(255,255,255,0.85);
+      text-decoration: none; position: relative; transition: color 0.3s;
+    }
+    nav.scrolled .nav-links a { color: var(--charcoal-mid); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--gold);
+      transition: width 0.35s var(--ease-out);
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      font-size: 0.72rem !important; letter-spacing: 0.2em !important;
+      padding: 0.6rem 1.4rem; border: 1px solid rgba(184,144,58,0.6);
+      color: var(--gold-light) !important; transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: 0.3s; }
+    nav.scrolled .nav-hamburger span { background: var(--charcoal); }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; background: var(--dark-bg);
+    }
+    .hero-marble {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 70%, rgba(60,40,10,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(40,30,10,0.4) 0%, transparent 60%),
+        linear-gradient(135deg, #1A1510 0%, #0E0C08 40%, #1C1710 60%, #100E0A 100%);
+      opacity: 1;
+    }
+    .hero-veins {
+      position: absolute; inset: 0; overflow: hidden;
+    }
+    .vein {
+      position: absolute; background: rgba(184,144,58,0.06);
+      transform-origin: center center;
+    }
+    .vein-1 {
+      width: 3px; height: 140%; top: -20%; left: 28%;
+      transform: rotate(-18deg);
+      box-shadow: 0 0 40px 20px rgba(184,144,58,0.04);
+    }
+    .vein-2 {
+      width: 1.5px; height: 110%; top: -5%; left: 45%;
+      transform: rotate(8deg);
+    }
+    .vein-3 {
+      width: 2px; height: 120%; top: -10%; right: 25%;
+      transform: rotate(-5deg);
+    }
+    .vein-4 {
+      width: 1px; height: 80%; top: 10%; left: 62%;
+      transform: rotate(12deg); opacity: 0.5;
+    }
+    .hero-grain {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+    .hero-content {
+      position: relative; z-index: 2; text-align: center;
+      padding: 2rem; max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 2rem; opacity: 0;
+      animation: fadeUp 0.8s 2.5s var(--ease-out) forwards;
+    }
+    .hero-title {
+      font-family: var(--serif); font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 400; line-height: 1.08; color: var(--white);
+      margin-bottom: 1.5rem; opacity: 0;
+      animation: fadeUp 1s 2.7s var(--ease-out) forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--gold-light); }
+    .hero-sub {
+      font-family: var(--serif-light); font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 300; color: rgba(245,240,232,0.65);
+      line-height: 1.6; margin-bottom: 3rem; max-width: 600px; margin-inline: auto;
+      opacity: 0; animation: fadeUp 0.8s 3s var(--ease-out) forwards;
+    }
+    .hero-btns {
+      display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 3.2s var(--ease-out) forwards;
+    }
+    .btn-primary {
+      padding: 1rem 2.5rem; background: var(--gold);
+      color: var(--white); font-family: var(--sans); font-size: 0.75rem;
+      letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
+      border: none; cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      padding: 1rem 2.5rem; background: transparent;
+      color: rgba(255,255,255,0.8); font-family: var(--sans); font-size: 0.75rem;
+      letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25); cursor: pointer;
+      transition: border-color 0.3s, color 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+      opacity: 0; animation: fadeUp 0.6s 3.5s var(--ease-out) forwards;
+      z-index: 2;
+    }
+    .hero-scroll span {
+      font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+    }
+    .scroll-line {
+      width: 1px; height: 50px; background: linear-gradient(to bottom, rgba(184,144,58,0.8), transparent);
+      animation: scrollLine 2s 4s var(--ease-in-out) infinite;
+    }
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ─── MARQUEE STRIP ─── */
+    .marquee-strip {
+      background: var(--gold); padding: 0.75rem 0; overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex; gap: 3rem;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--white); font-weight: 500;
+    }
+    .marquee-dot { color: rgba(255,255,255,0.5); font-size: 0.5rem; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ─── CATEGORIES ─── */
+    .section { padding: 6rem 3rem; }
+    .section-label {
+      font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400; color: var(--charcoal); line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-sub {
+      font-family: var(--serif-light); font-size: 1.05rem; font-weight: 300;
+      color: var(--stone); line-height: 1.7; max-width: 520px;
+      margin-bottom: 3.5rem;
+    }
+
+    #categories { background: var(--white); }
+    .categories-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 1.2rem;
+    }
+    .cat-card {
+      position: relative; overflow: hidden; cursor: pointer;
+      background: var(--charcoal-mid);
+    }
+    .cat-card:first-child { grid-row: span 2; }
+    .cat-card-img {
+      width: 100%; height: 100%; min-height: 220px;
+      object-fit: cover; display: block;
+      transition: transform 0.7s var(--ease-out), filter 0.5s;
+      filter: brightness(0.75);
+    }
+    .cat-card:first-child .cat-card-img { min-height: 460px; }
+    .cat-card:hover .cat-card-img { transform: scale(1.08); filter: brightness(0.55); }
+    .cat-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,24,7,0.85) 0%, transparent 60%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 1.8rem;
+    }
+    .cat-label {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .cat-title {
+      font-family: var(--serif); font-size: 1.5rem; font-weight: 400;
+      color: var(--white); margin-bottom: 0.8rem; line-height: 1.2;
+    }
+    .cat-card:first-child .cat-title { font-size: 2rem; }
+    .cat-link {
+      font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); text-decoration: none; display: flex;
+      align-items: center; gap: 0.5rem;
+      transition: color 0.3s, gap 0.3s;
+    }
+    .cat-link:hover { color: var(--gold); gap: 0.9rem; }
+    .cat-link::after { content: '→'; }
+
+    /* ─── FEATURED PRODUCTS ─── */
+    #featured { background: var(--cream); }
+    .featured-header { text-align: center; margin-bottom: 4rem; }
+    .featured-header .section-sub { margin-inline: auto; text-align: center; }
+    .countdown-wrap {
+      display: flex; gap: 1.5rem; justify-content: center; margin-bottom: 4rem; flex-wrap: wrap;
+    }
+    .countdown-block { text-align: center; }
+    .countdown-num {
+      font-family: var(--serif); font-size: 2.5rem; font-weight: 400; color: var(--charcoal);
+      display: block; line-height: 1; min-width: 3ch;
+    }
+    .countdown-label {
+      font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--stone); margin-top: 0.3rem;
+    }
+    .countdown-sep {
+      font-family: var(--serif); font-size: 2rem; color: var(--gold);
+      align-self: flex-start; margin-top: 0.2rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: var(--white); position: relative; overflow: hidden;
+      transition: box-shadow 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+    }
+    .product-card:hover { box-shadow: 0 24px 60px rgba(26,24,7,0.12); transform: translateY(-6px); }
+    .product-badge {
+      position: absolute; top: 1rem; left: 1rem; z-index: 1;
+      background: var(--gold); color: var(--white);
+      font-family: var(--sans); font-size: 0.6rem; letter-spacing: 0.2em;
+      text-transform: uppercase; padding: 0.3rem 0.8rem;
+    }
+    .product-badge.wholesale { background: var(--charcoal); }
+    .product-img-wrap { overflow: hidden; position: relative; }
+    .product-img {
+      width: 100%; height: 260px; object-fit: cover; display: block;
+      transition: transform 0.6s var(--ease-out);
+    }
+    .product-card:hover .product-img { transform: scale(1.06); }
+    .product-quick-add {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(26,24,7,0.85); padding: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem; color: var(--gold-light);
+      font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.2em;
+      text-transform: uppercase; cursor: pointer;
+      transform: translateY(100%); transition: transform 0.4s var(--ease-out);
+    }
+    .product-card:hover .product-quick-add { transform: translateY(0); }
+    .product-info { padding: 1.4rem; }
+    .product-cat {
+      font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--stone); margin-bottom: 0.4rem;
+    }
+    .product-name {
+      font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
+      color: var(--charcoal); margin-bottom: 0.3rem; line-height: 1.3;
+    }
+    .product-desc {
+      font-size: 0.8rem; color: var(--stone); margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-family: var(--serif); font-size: 1.3rem; color: var(--charcoal); }
+    .product-price span { font-size: 0.75rem; color: var(--stone); font-family: var(--sans); margin-left: 0.2rem; }
+    .product-unit {
+      font-size: 0.65rem; color: var(--stone-light); letter-spacing: 0.1em; margin-top: -2px;
+    }
+    .add-btn {
+      width: 38px; height: 38px; border-radius: 50%; background: var(--charcoal);
+      color: var(--white); border: none; cursor: pointer; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .add-btn:hover { background: var(--gold); transform: scale(1.1); }
+
+    /* ─── WHOLESALE SECTION ─── */
+    #wholesale {
+      background: var(--charcoal); padding: 6rem 3rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: center;
+    }
+    .wholesale-content .section-label { color: var(--gold-light); }
+    .wholesale-content .section-title { color: var(--white); }
+    .wholesale-content .section-sub { color: rgba(245,240,232,0.55); max-width: none; }
+    .wholesale-perks { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 2.5rem; }
+    .perk {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.2rem; border: 1px solid rgba(184,144,58,0.15);
+      transition: border-color 0.3s;
+    }
+    .perk:hover { border-color: rgba(184,144,58,0.4); }
+    .perk-icon {
+      width: 36px; height: 36px; flex-shrink: 0; background: rgba(184,144,58,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.1rem;
+    }
+    .perk-title {
+      font-family: var(--sans); font-size: 0.85rem; font-weight: 500;
+      color: var(--white); margin-bottom: 0.2rem;
+    }
+    .perk-desc { font-size: 0.78rem; color: rgba(245,240,232,0.45); line-height: 1.5; }
+    .wholesale-form-wrap { background: rgba(255,255,255,0.04); padding: 2.5rem; }
+    .form-title {
+      font-family: var(--serif); font-size: 1.6rem; color: var(--white);
+      margin-bottom: 0.5rem; font-weight: 400;
+    }
+    .form-sub { font-size: 0.8rem; color: rgba(245,240,232,0.4); margin-bottom: 2rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: span 2; }
+    .form-label {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(245,240,232,0.45);
+    }
+    .form-input, .form-select, .form-textarea {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white); font-family: var(--sans); font-size: 0.85rem;
+      padding: 0.75rem 1rem; outline: none; width: 100%;
+      transition: border-color 0.3s;
+    }
+    .form-textarea { min-height: 90px; resize: vertical; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--gold); }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .form-select option { background: var(--charcoal-mid); }
+    .form-submit {
+      width: 100%; margin-top: 1.2rem; padding: 1rem;
+      background: var(--gold); border: none; color: var(--white);
+      font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.25em;
+      text-transform: uppercase; cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    /* ─── STATS ─── */
+    #stats { background: var(--cream-dark); padding: 5rem 3rem; }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; text-align: center;
+    }
+    .stat-num {
+      font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400; color: var(--charcoal); line-height: 1;
+    }
+    .stat-unit { color: var(--gold); }
+    .stat-label {
+      font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--stone); margin-top: 0.6rem;
+    }
+
+    /* ─── BLOG ─── */
+    #blog { background: var(--white); }
+    .blog-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem;
+    }
+    .blog-card { cursor: pointer; }
+    .blog-img-wrap { overflow: hidden; margin-bottom: 1.2rem; }
+    .blog-img {
+      width: 100%; height: 240px; object-fit: cover; display: block;
+      transition: transform 0.6s var(--ease-out), filter 0.4s;
+      filter: brightness(0.95);
+    }
+    .blog-card:first-child .blog-img { height: 340px; }
+    .blog-card:hover .blog-img { transform: scale(1.05); filter: brightness(0.8); }
+    .blog-meta {
+      display: flex; gap: 1rem; align-items: center; margin-bottom: 0.7rem;
+    }
+    .blog-cat {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-family: var(--sans);
+    }
+    .blog-date { font-size: 0.72rem; color: var(--stone-light); font-family: var(--sans); }
+    .blog-title {
+      font-family: var(--serif); font-size: 1.15rem; font-weight: 400;
+      color: var(--charcoal); line-height: 1.35; margin-bottom: 0.6rem;
+    }
+    .blog-card:first-child .blog-title { font-size: 1.6rem; }
+    .blog-excerpt {
+      font-size: 0.82rem; color: var(--stone); line-height: 1.65; margin-bottom: 1rem;
+    }
+    .read-more {
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none; display: inline-flex;
+      align-items: center; gap: 0.4rem;
+      transition: gap 0.3s;
+    }
+    .read-more:hover { gap: 0.8rem; }
+    .read-more::after { content: '→'; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--cream); padding: 6rem 3rem; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .contact-info .section-sub { max-width: none; margin-bottom: 2.5rem; }
+    .contact-details { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+    .contact-icon {
+      width: 40px; height: 40px; background: var(--gold-pale);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1rem; flex-shrink: 0;
+    }
+    .contact-item-title { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); margin-bottom: 0.2rem; }
+    .contact-item-val { font-family: var(--serif-light); font-size: 1rem; color: var(--charcoal); }
+    .contact-form { background: var(--white); padding: 2.5rem; }
+    .contact-form .form-grid { gap: 1rem; }
+    .contact-form .form-input,
+    .contact-form .form-select,
+    .contact-form .form-textarea {
+      background: var(--cream); border-color: rgba(140,128,112,0.25); color: var(--charcoal);
+    }
+    .contact-form .form-input::placeholder,
+    .contact-form .form-textarea::placeholder { color: var(--stone-light); }
+    .contact-form .form-label { color: var(--stone); }
+    .contact-form .form-select option { background: var(--white); color: var(--charcoal); }
+    .contact-form .form-submit { background: var(--charcoal); }
+    .contact-form .form-submit:hover { background: var(--charcoal-mid); }
+
+    /* ─── NEWSLETTER ─── */
+    #newsletter {
+      background: var(--dark-bg); padding: 5rem 3rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #newsletter::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,144,58,0.08) 0%, transparent 70%);
+    }
+    .nl-title {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; color: var(--white); margin-bottom: 0.8rem; position: relative;
+    }
+    .nl-sub {
+      font-family: var(--serif-light); font-size: 1rem; color: rgba(245,240,232,0.45);
+      margin-bottom: 2.5rem; position: relative;
+    }
+    .nl-form {
+      display: flex; gap: 0; max-width: 480px; margin-inline: auto;
+      position: relative;
+    }
+    .nl-input {
+      flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-right: none; color: var(--white); font-family: var(--sans); font-size: 0.85rem;
+      padding: 0.9rem 1.2rem; outline: none;
+    }
+    .nl-input::placeholder { color: rgba(255,255,255,0.25); }
+    .nl-btn {
+      padding: 0.9rem 1.8rem; background: var(--gold); border: none;
+      color: var(--white); font-family: var(--sans); font-size: 0.68rem;
+      letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nl-btn:hover { background: var(--gold-light); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--charcoal-mid); padding: 4rem 3rem 2rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .logo {
+      font-family: var(--serif); font-size: 1.8rem; color: var(--white);
+      display: block; margin-bottom: 0.8rem; letter-spacing: 0.04em;
+    }
+    .footer-tagline {
+      font-family: var(--serif-light); font-size: 0.9rem; color: rgba(245,240,232,0.4);
+      line-height: 1.6; margin-bottom: 1.5rem; max-width: 260px;
+    }
+    .social-links { display: flex; gap: 0.8rem; }
+    .social-link {
+      width: 36px; height: 36px; border: 1px solid rgba(255,255,255,0.1);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-col-title {
+      font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.4rem;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-links a {
+      font-size: 0.82rem; color: rgba(245,240,232,0.45); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-copy { font-size: 0.72rem; color: rgba(245,240,232,0.25); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-size: 0.72rem; color: rgba(245,240,232,0.25); text-decoration: none; }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left {
+      opacity: 0; transform: translateX(-30px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-right {
+      opacity: 0; transform: translateX(30px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .reveal-right.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ─── MOBILE NAV ─── */
+    .mobile-menu {
+      position: fixed; inset: 0; background: var(--dark-bg); z-index: 999;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem; transform: translateX(100%); transition: transform 0.5s var(--ease-out);
+    }
+    .mobile-menu.open { transform: none; }
+    .mobile-menu a {
+      font-family: var(--serif); font-size: 2rem; color: var(--white);
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute; top: 2rem; right: 2rem;
+      background: none; border: none; cursor: pointer;
+      font-size: 1.5rem; color: var(--white);
+    }
+
+    /* ─── TOAST ─── */
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 5000;
+      background: var(--charcoal); color: var(--white);
+      padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0.8rem;
+      font-family: var(--sans); font-size: 0.82rem;
+      transform: translateY(100px); opacity: 0;
+      transition: transform 0.4s var(--ease-out), opacity 0.4s;
+    }
+    .toast.show { transform: none; opacity: 1; }
+    .toast-icon { color: var(--gold); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .cat-grid { grid-template-columns: repeat(2, 1fr); }
+      .cat-card:first-child { grid-row: span 1; grid-column: span 2; }
+      .cat-card:first-child .cat-card-img { min-height: 300px; }
+      #wholesale { grid-template-columns: 1fr; gap: 3rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+      .blog-grid { grid-template-columns: 1fr 1fr; }
+      .blog-card:first-child { grid-column: span 2; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      nav.scrolled { padding: 0.8rem 1.5rem; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .section { padding: 4rem 1.5rem; }
+      #wholesale { padding: 4rem 1.5rem; }
+      #stats { padding: 3.5rem 1.5rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-card:first-child { grid-column: auto; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: auto; }
+      #wholesale .form-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .cat-grid { grid-template-columns: 1fr; }
+      .cat-card:first-child { grid-column: auto; }
+      .hero-btns { flex-direction: column; align-items: center; }
+    }
+    @media (hover: none) {
+      #cursor, #cursor-ring { display: none; }
+      body { cursor: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Page Loader -->
+  <div id="loader">
+    <div id="loader-logo">SBM&amp;G</div>
+    <div id="loader-sub">Premium Stone &amp; Surfaces</div>
+    <div id="loader-bar-wrap"><div id="loader-bar"></div></div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Close menu">✕</button>
+    <a href="#categories">Collections</a>
+    <a href="#featured">Featured</a>
+    <a href="#wholesale">Wholesale</a>
+    <a href="#blog">Journal</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">SBM&amp;G</a>    <!-- <a href="/" class="nav-logo">SBM&amp;G</a> gave access to parent dir lol-->
+    <ul class="nav-links">
+      <li><a href="#categories">Collections</a></li>
+      <li><a href="#featured">Featured</a></li>
+      <li><a href="#wholesale">Wholesale</a></li>
+      <li><a href="#blog">Journal</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#wholesale" class="nav-cta">Get Quote</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-marble"></div>
+    <div class="hero-veins">
+      <div class="vein vein-1"></div>
+      <div class="vein vein-2"></div>
+      <div class="vein vein-3"></div>
+      <div class="vein vein-4"></div>
+    </div>
+    <div class="hero-grain"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Est. Since 1998 &nbsp;·&nbsp; Lucknow, India</p>
+      <h1 class="hero-title">
+        Surfaces That<br>
+        <em>Define</em> Spaces
+      </h1>
+      <p class="hero-sub">
+        Premium marble, granite, tiles and ceramics — crafted for those who understand
+        that the floor beneath your feet speaks before you do.
+      </p>
+      <div class="hero-btns">
+        <a href="#categories" class="btn-primary">Explore Collections</a>
+        <a href="#wholesale" class="btn-outline">Wholesale Inquiry</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Marquee Strip -->
+  <div class="marquee-strip">
+    <div class="marquee-track" id="marqueeTrack">
+      <span class="marquee-item">Italian Marble</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Rajasthani Granite</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Vitrified Tiles</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Ceramic Sanitary</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Construction Chemicals</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Wholesale Available</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Premium Accessories</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Free Site Visit</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Italian Marble</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Rajasthani Granite</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Vitrified Tiles</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Ceramic Sanitary</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Construction Chemicals</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Wholesale Available</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Premium Accessories</span><span class="marquee-dot">◆</span>
+      <span class="marquee-item">Free Site Visit</span><span class="marquee-dot">◆</span>
+    </div>
+  </div>
+
+  <!-- Categories Section -->
+  <section id="categories" class="section">
+    <div class="categories-header">
+      <div class="reveal">
+        <p class="section-label">Our Collections</p>
+        <h2 class="section-title">Stone &amp; Surface<br><em>Categories</em></h2>
+      </div>
+      <div class="section-sub reveal reveal-delay-1" style="margin-bottom: 0;">
+        From ancient marble quarries to cutting-edge vitrified surfaces — every category
+        selected for quality, finish, and lasting beauty.
+      </div>
+    </div>
+    <div class="cat-grid reveal">
+      <div class="cat-card" onclick="location.href='catalog.html?cat=marble'">
+        <img class="cat-card-img"
+          src="https://images.unsplash.com/photo-1615971677499-5467cbab01bc?w=800&q=80"
+          alt="Italian White Marble" loading="lazy" />
+        <div class="cat-overlay">
+          <p class="cat-label">Stones &amp; Slabs</p>
+          <h3 class="cat-title">Marble &amp;<br>Granite</h3>
+          <a href="catalog.html?cat=marble" class="cat-link">Explore Range</a>
+        </div>
+      </div>
+      <div class="cat-card" onclick="location.href='catalog.html?cat=tiles'">
+        <img class="cat-card-img"
+          src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+          alt="Vitrified Floor Tiles" loading="lazy" />
+        <div class="cat-overlay">
+          <p class="cat-label">Flooring</p>
+          <h3 class="cat-title">Tiles &amp;<br>Ceramics</h3>
+          <a href="catalog.html?cat=tiles" class="cat-link">View Collection</a>
+        </div>
+      </div>
+      <div class="cat-card" onclick="location.href='catalog.html?cat=sanitary'">
+        <img class="cat-card-img"
+          src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80"
+          alt="Sanitary Ware" loading="lazy" />
+        <div class="cat-overlay">
+          <p class="cat-label">Bathroom</p>
+          <h3 class="cat-title">Sanitary &amp;<br>Accessories</h3>
+          <a href="catalog.html?cat=sanitary" class="cat-link">Browse Items</a>
+        </div>
+      </div>
+      <div class="cat-card" onclick="location.href='catalog.html?cat=chemicals'">
+        <img class="cat-card-img"
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80"
+          alt="Construction Chemicals" loading="lazy" />
+        <div class="cat-overlay">
+          <p class="cat-label">Construction</p>
+          <h3 class="cat-title">Chemicals &amp;<br>Adhesives</h3>
+          <a href="catalog.html?cat=chemicals" class="cat-link">See Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products of the Day -->
+  <section id="featured" class="section">
+    <div class="featured-header reveal">
+      <p class="section-label">Daily Selection</p>
+      <h2 class="section-title">Featured <em>Products</em> of the Day</h2>
+      <p class="section-sub">
+        Hand-curated by our experts every morning. These products are on special today only.
+      </p>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-wrap reveal">
+      <div class="countdown-block">
+        <span class="countdown-num" id="cdHours">00</span>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-block">
+        <span class="countdown-num" id="cdMins">00</span>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-block">
+        <span class="countdown-num" id="cdSecs">00</span>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+
+    <div class="products-grid">
+      <!-- Product 1 -->
+      <div class="product-card reveal reveal-delay-1">
+        <span class="product-badge">Today's Pick</span>
+        <div class="product-img-wrap">
+          <img class="product-img"
+            src="https://images.unsplash.com/photo-1615971677499-5467cbab01bc?w=600&q=80"
+            alt="Statuario White Marble" loading="lazy" />
+          <div class="product-quick-add" onclick="addToCart('Statuario White Marble')">
+            ✦ Quick Add to Cart
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-cat">Marble · Italian</p>
+          <h3 class="product-name">Statuario White Marble</h3>
+          <p class="product-desc">Book-matched slabs with dramatic grey veining. Perfect for feature walls and flooring.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">₹285 <span>/ sq.ft</span></div>
+              <div class="product-unit">Wholesale: ₹210 / sq.ft</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Statuario White Marble')" aria-label="Add to cart">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card reveal reveal-delay-2">
+        <span class="product-badge wholesale">Wholesale Deal</span>
+        <div class="product-img-wrap">
+          <img class="product-img"
+            src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+            alt="Black Galaxy Granite" loading="lazy" />
+          <div class="product-quick-add" onclick="addToCart('Black Galaxy Granite')">
+            ✦ Quick Add to Cart
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-cat">Granite · South Indian</p>
+          <h3 class="product-name">Black Galaxy Granite</h3>
+          <p class="product-desc">Midnight black with golden sparkle. Ideal for kitchen countertops and outdoor cladding.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">₹195 <span>/ sq.ft</span></div>
+              <div class="product-unit">Wholesale: ₹140 / sq.ft</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Black Galaxy Granite')" aria-label="Add to cart">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card reveal reveal-delay-3">
+        <span class="product-badge">Featured</span>
+        <div class="product-img-wrap">
+          <img class="product-img"
+            src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80"
+            alt="Calacatta Gold Vitrified Tile" loading="lazy" />
+          <div class="product-quick-add" onclick="addToCart('Calacatta Gold Vitrified Tile')">
+            ✦ Quick Add to Cart
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-cat">Tiles · Vitrified</p>
+          <h3 class="product-name">Calacatta Gold Vitrified</h3>
+          <p class="product-desc">800×800mm large-format tile with micro-polished finish. Zero water absorption.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">₹118 <span>/ sq.ft</span></div>
+              <div class="product-unit">Wholesale: ₹88 / sq.ft</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Calacatta Gold Vitrified Tile')" aria-label="Add to cart">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card reveal reveal-delay-4">
+        <span class="product-badge">New Arrival</span>
+        <div class="product-img-wrap">
+          <img class="product-img"
+            src="https://images.unsplash.com/photo-1622547748225-3fc4abd2cca0?w=600&q=80"
+            alt="Cement Tile - Moroccan" loading="lazy" />
+          <div class="product-quick-add" onclick="addToCart('Moroccan Cement Tiles')">
+            ✦ Quick Add to Cart
+          </div>
+        </div>
+        <div class="product-info">
+          <p class="product-cat">Tiles · Handmade</p>
+          <h3 class="product-name">Moroccan Cement Tiles</h3>
+          <p class="product-desc">Hand-poured decorative tiles with classic geometric patterns. For accent walls and patios.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">₹245 <span>/ sq.ft</span></div>
+              <div class="product-unit">Wholesale: ₹185 / sq.ft</div>
+            </div>
+            <button class="add-btn" onclick="addToCart('Moroccan Cement Tiles')" aria-label="Add to cart">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 3rem;" class="reveal">
+      <a href="catalog.html" class="btn-primary">View Full Catalog</a>
+    </div>
+  </section>
+
+  <!-- Wholesale Section -->
+  <section id="wholesale">
+    <div class="wholesale-content reveal-left">
+      <p class="section-label">Business &amp; Trade</p>
+      <h2 class="section-title" style="color: var(--white);">Wholesale &amp;<br><em>B2B Portal</em></h2>
+      <p class="section-sub">
+        Special pricing for builders, contractors, architects, and interior designers.
+        Register once, unlock trade pricing across all categories.
+      </p>
+      <div class="wholesale-perks">
+        <div class="perk">
+          <div class="perk-icon">%</div>
+          <div>
+            <p class="perk-title">Up to 35% Off Retail Prices</p>
+            <p class="perk-desc">Tiered pricing based on monthly volume. More you buy, more you save.</p>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">🚚</div>
+          <div>
+            <p class="perk-title">Free Site Delivery on Orders ₹50,000+</p>
+            <p class="perk-desc">Covered across Lucknow & NCR. Pan-India freight negotiable.</p>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">📋</div>
+          <div>
+            <p class="perk-title">Dedicated Account Manager</p>
+            <p class="perk-desc">One-on-one support for project estimation, samples, and order tracking.</p>
+          </div>
+        </div>
+        <div class="perk">
+          <div class="perk-icon">💳</div>
+          <div>
+            <p class="perk-title">Credit Terms Available</p>
+            <p class="perk-desc">30/60-day credit for verified trade accounts with GST registration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wholesale-form-wrap reveal-right">
+      <h3 class="form-title">Apply for Trade Account</h3>
+      <p class="form-sub">Fill in your details and we'll respond within 24 hours.</p>
+      <div class="form-grid" id="wholesaleForm">
+        <div class="form-group">
+          <label class="form-label">Business Name</label>
+          <input type="text" class="form-input" placeholder="Your Company Name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Contact Person</label>
+          <input type="text" class="form-input" placeholder="Your Full Name" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="tel" class="form-input" placeholder="+91 98765 43210" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">GST Number</label>
+          <input type="text" class="form-input" placeholder="GSTIN (optional)" />
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Business Type</label>
+          <select class="form-select">
+            <option value="">— Select Type —</option>
+            <option>Builder / Developer</option>
+            <option>Contractor</option>
+            <option>Interior Designer</option>
+            <option>Architect</option>
+            <option>Retailer / Dealer</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label class="form-label">Expected Monthly Volume</label>
+          <textarea class="form-textarea" placeholder="Describe your typical monthly requirements (e.g. 500 sq.ft marble + 1000 sq.ft tiles)…"></textarea>
+        </div>
+      </div>
+      <button class="form-submit" onclick="submitWholesale()">Submit Trade Application →</button>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats">
+    <div class="stats-grid">
+      <div class="reveal">
+        <div class="stat-num"><span class="counter" data-target="25">0</span><span class="stat-unit">+</span></div>
+        <p class="stat-label">Years of Excellence</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="stat-num"><span class="counter" data-target="12000">0</span><span class="stat-unit">+</span></div>
+        <p class="stat-label">Projects Completed</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="stat-num"><span class="counter" data-target="800">0</span><span class="stat-unit">+</span></div>
+        <p class="stat-label">Products in Stock</p>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <div class="stat-num"><span class="counter" data-target="350">0</span><span class="stat-unit">+</span></div>
+        <p class="stat-label">Wholesale Partners</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="section">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;">
+      <div class="reveal">
+        <p class="section-label">Design Journal</p>
+        <h2 class="section-title">Ideas &amp; <em>Inspiration</em></h2>
+      </div>
+      <a href="blog.html" class="read-more reveal" style="margin-bottom: 0.5rem;">View All Articles</a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-img-wrap">
+          <img class="blog-img"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+            alt="Marble Living Room" loading="lazy" />
+        </div>
+        <div class="blog-meta">
+          <span class="blog-cat">Interior Trends</span>
+          <span class="blog-date">June 10, 2025</span>
+        </div>
+        <h3 class="blog-title">Marble in 2025: The Return of the Slab Feature Wall</h3>
+        <p class="blog-excerpt">Full-height marble slabs are back — and they've never looked more refined. We explore how top designers are using bookmatch technology to create breathtaking focal points.</p>
+        <a href="blog.html#marble-walls" class="read-more">Read Article</a>
+      </div>
+      <div class="blog-card reveal reveal-delay-1">
+        <div class="blog-img-wrap">
+          <img class="blog-img"
+            src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80"
+            alt="Kitchen Granite Countertop" loading="lazy" />
+        </div>
+        <div class="blog-meta">
+          <span class="blog-cat">Product Guide</span>
+          <span class="blog-date">May 28, 2025</span>
+        </div>
+        <h3 class="blog-title">Granite vs Quartz: Which Countertop is Right for Your Kitchen?</h3>
+        <p class="blog-excerpt">We break down cost, durability, and maintenance so you can make the perfect choice.</p>
+        <a href="blog.html#granite-vs-quartz" class="read-more">Read Article</a>
+      </div>
+      <div class="blog-card reveal reveal-delay-2">
+        <div class="blog-img-wrap">
+          <img class="blog-img"
+            src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80"
+            alt="Modern Bathroom" loading="lazy" />
+        </div>
+        <div class="blog-meta">
+          <span class="blog-cat">Tips &amp; Care</span>
+          <span class="blog-date">May 15, 2025</span>
+        </div>
+        <h3 class="blog-title">5 Tile Cleaning Mistakes That Are Damaging Your Grout</h3>
+        <p class="blog-excerpt">Common cleaning errors that could be shortening the life of your investment.</p>
+        <a href="blog.html#tile-cleaning" class="read-more">Read Article</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div class="contact-info reveal-left">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">Let's Discuss<br><em>Your Project</em></h2>
+        <p class="section-sub">
+          Whether you're renovating a single bathroom or sourcing materials for a 50-flat residential complex —
+          our team is ready to provide expert guidance and the best pricing.
+        </p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <p class="contact-item-title">Showroom Address</p>
+              <p class="contact-item-val">SBM&G, Mahanagar, Lucknow, Uttar Pradesh 226006</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div>
+              <p class="contact-item-title">Phone</p>
+              <p class="contact-item-val">+91 99998 88877</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div>
+              <p class="contact-item-title">Email</p>
+              <p class="contact-item-val">info@sbmg.in</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🕐</div>
+            <div>
+              <p class="contact-item-title">Showroom Hours</p>
+              <p class="contact-item-val">Mon–Sat: 9:30am – 7:00pm · Sun: 10am – 4pm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal-right">
+        <h3 class="form-title" style="color: var(--charcoal);">Send Us a Message</h3>
+        <p class="form-sub" style="color: var(--stone);">We respond to all enquiries within 4 business hours.</p>
+        <div class="form-grid">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" id="ctName" placeholder="Rajesh Kumar" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-input" id="ctPhone" placeholder="+91 98765 43210" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="ctEmail" placeholder="your@email.com" />
+          </div>
+          <div class="form-group full">
+            <label class="form-label">I'm Interested In</label>
+            <select class="form-select" id="ctCategory">
+              <option value="">— Select Category —</option>
+              <option>Marble &amp; Granite</option>
+              <option>Floor &amp; Wall Tiles</option>
+              <option>Sanitary Ware</option>
+              <option>Construction Chemicals</option>
+              <option>Wholesale Pricing</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Your Message / Requirements</label>
+            <textarea class="form-textarea" id="ctMessage" placeholder="Tell us about your project, dimensions, or product requirements…"></textarea>
+          </div>
+        </div>
+        <button class="form-submit" style="background: var(--charcoal);" onclick="submitContact()">
+          Send Message →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="newsletter">
+    <h2 class="nl-title reveal">Stay Inspired</h2>
+    <p class="nl-sub reveal">New arrivals, design tips, and exclusive offers — straight to your inbox.</p>
+    <div class="nl-form reveal">
+      <input type="email" class="nl-input" id="nlEmail" placeholder="Enter your email address" />
+      <button class="nl-btn" onclick="submitNewsletter()">Subscribe</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo">SBM&amp;G</span>
+        <p class="footer-tagline">Premium tiles, marble, granite and surfaces for homes and commercial spaces across India.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">In</a>
+          <a href="#" class="social-link" aria-label="Facebook">Fb</a>
+          <a href="#" class="social-link" aria-label="Pinterest">Pt</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">Li</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Collections</p>
+        <ul class="footer-links">
+          <li><a href="catalog.html?cat=marble">Marble &amp; Granite</a></li>
+          <li><a href="catalog.html?cat=tiles">Floor Tiles</a></li>
+          <li><a href="catalog.html?cat=wall">Wall Tiles</a></li>
+          <li><a href="catalog.html?cat=sanitary">Sanitary Ware</a></li>
+          <li><a href="catalog.html?cat=chemicals">Chemicals</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Company</p>
+        <ul class="footer-links">
+          <li><a href="about.html">About SBM&amp;G</a></li>
+          <li><a href="#wholesale">Wholesale Portal</a></li>
+          <li><a href="blog.html">Design Journal</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="admin/login.html">Admin Login</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Support</p>
+        <ul class="footer-links">
+          <li><a href="#">Delivery Policy</a></li>
+          <li><a href="#">Return &amp; Exchange</a></li>
+          <li><a href="#">Sample Request</a></li>
+          <li><a href="#">Installation Guide</a></li>
+          <li><a href="#">FAQs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 SBM&amp;G. All rights reserved. Made in India 🇮🇳</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">GST: 09XXXXX1234Z</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✦</span>
+    <span id="toastMsg">Item added to cart!</span>
+  </div>
+
+  <script>
+    /* ─── CURSOR ─── */
+    const cursor = document.getElementById('cursor');
+    const cursorRing = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animCursor() {
+      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+      cursorRing.style.left = rx + 'px'; cursorRing.style.top = ry + 'px';
+      requestAnimationFrame(animCursor);
+    }
+    animCursor();
+
+    /* ─── LOADER ─── */
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hide');
+      }, 2400);
+    });
+
+    /* ─── NAV SCROLL ─── */
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ─── MOBILE MENU ─── */
+    function openMobileMenu() { document.getElementById('mobileMenu').classList.add('open'); }
+    function closeMobileMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+    document.querySelectorAll('.mobile-menu a').forEach(a => a.addEventListener('click', closeMobileMenu));
+
+    /* ─── SCROLL REVEAL ─── */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* ─── COUNTDOWN TIMER ─── */
+    function updateCountdown() {
+      const now = new Date();
+      const midnight = new Date(now);
+      midnight.setHours(24, 0, 0, 0);
+      const diff = midnight - now;
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('cdHours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cdMins').textContent = String(m).padStart(2, '0');
+      document.getElementById('cdSecs').textContent = String(s).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /* ─── COUNTER ANIMATION ─── */
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          const duration = 2000;
+          const start = performance.now();
+          function step(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 4);
+            el.textContent = Math.round(ease * target).toLocaleString('en-IN');
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    /* ─── HERO PARALLAX ─── */
+    const heroMarble = document.querySelector('.hero-marble');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight) {
+        heroMarble.style.transform = `translateY(${y * 0.4}px)`;
+        document.querySelector('.hero-content').style.transform = `translateY(${y * 0.2}px)`;
+        document.querySelector('.hero-content').style.opacity = 1 - y / (window.innerHeight * 0.7);
+      }
+    }, { passive: true });
+
+    /* ─── TOAST ─── */
+    let toastTimer;
+    function showToast(msg) {
+      clearTimeout(toastTimer);
+      document.getElementById('toastMsg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+    }
+
+    /* ─── ADD TO CART ─── */
+    let cartCount = 0;
+    function addToCart(name) {
+      cartCount++;
+      showToast(`"${name}" added to cart (${cartCount} item${cartCount > 1 ? 's' : ''})`);
+    }
+
+    /* ─── WHOLESALE FORM ─── */
+    function submitWholesale() {
+      const btn = document.querySelector('#wholesale .form-submit');
+      btn.textContent = 'Sending…';
+      setTimeout(() => {
+        btn.textContent = '✦ Application Received!';
+        showToast('Wholesale application submitted! We\'ll contact you within 24 hours.');
+        setTimeout(() => { btn.textContent = 'Submit Trade Application →'; }, 4000);
+      }, 1500);
+    }
+
+    /* ─── CONTACT FORM ─── */
+    function submitContact() {
+      const name = document.getElementById('ctName').value;
+      const email = document.getElementById('ctEmail').value;
+      if (!name || !email) { showToast('Please fill in required fields.'); return; }
+      const btn = document.querySelector('.contact-form .form-submit');
+      btn.textContent = 'Sending…';
+      setTimeout(() => {
+        btn.textContent = '✦ Message Sent!';
+        showToast(`Thank you, ${name}! We'll reply to ${email} soon.`);
+        setTimeout(() => { btn.textContent = 'Send Message →'; }, 4000);
+      }, 1500);
+    }
+
+    /* ─── NEWSLETTER ─── */
+    function submitNewsletter() {
+      const email = document.getElementById('nlEmail').value;
+      if (!email.includes('@')) { showToast('Please enter a valid email.'); return; }
+      showToast('You\'re subscribed! Welcome to the SBM&G Journal.');
+      document.getElementById('nlEmail').value = '';
+    }
+  </script>
+</body>
+</html>
