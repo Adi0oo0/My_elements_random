@@ -15,9 +15,7 @@ logger = logging.getLogger(__name__)
 MAX_WORKER_CONCURRENCY = 31
 BASE_URL = "https://integrate.api.nvidia.com/v1"
 API_KEYS = [
-    "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",
-    "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",
-    "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"
+    ...
 ]
 
 # -----------------------------------------------------------------------------
